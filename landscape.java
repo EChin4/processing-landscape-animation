@@ -5,7 +5,6 @@ void setup() {
  size(800, 600);
  original = loadImage("pondSwan.jpg"); 
  swan = loadImage("swan.png");
- swan2 = loadImage("swanTest.jpeg"); 
  xSwan = width * 0.4;
  ySwan = height * 0.63; 
  swanSpeed = 2;
@@ -14,18 +13,13 @@ void setup() {
 void draw() {
  
   image(original, 0, 0, width, height);
-   image(swan, xSwan, ySwan, width*0.09, height*0.09);
+  image(swan, xSwan, ySwan, width*0.09, height*0.09);
  
   xSwan -= swanSpeed;
   
-  if (xSwan <= 220) {
-    swanSpeed = -swanSpeed;
-    image(swan, xSwan, ySwan, width*0.09, height*0.09);
-  } else if (xSwan >= width-300) {
-    swanSpeed = -swanSpeed;
-    image(swan2, xSwan, ySwan, width*0.09, height*0.09);
-  }
-  
+  if (xSwan <= 220 || xSwan >= width-300) {     // need to flip image when turning
+    swanSpeed = -swanSpeed; 
+  } 
 
   println("x: " + mouseX + "  y: " + mouseY);  
 }
